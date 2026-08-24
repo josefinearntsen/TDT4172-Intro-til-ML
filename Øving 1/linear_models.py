@@ -25,16 +25,27 @@ class LinearRegression():
 
         m, n = X.shape
 
-        self.weights = np.zeros(n)
+        # stigning og konstantledd. starte med flat linje.
+        self.weights = np.zeros(n) 
         self.bias = 0
 
+        # justere linja fror hver runde
         for i in range(self.n_iterations):
+
+            # gjette y-verdian
             y_pred = np.dot(X, self.weights) + self.bias
 
+            # regne ut bommen
             loss = (1 / m) * np.sum((y_pred - y) ** 2)
             self.loss_history.append(loss)
 
-            
+            # kordan retning bør man justere linja for å minske bommen
+            dw = (2 / m) * np.dot(X.T, (y_pred - y)) # justere stigningstalle
+            db = (2 / m) * np.sum(y_pred - y) # justere konstantledd
+
+            # så juster linja litt i den retninga. lr e kor store steg man tar. 
+            self.weights -= self.lr * dw
+            self.bias -= self.lr * db
 
         raise NotImplementedError("LinearRegression.fit is not implemented yet.")
     
