@@ -33,7 +33,7 @@ class LinearRegression():
         for i in range(self.n_iterations):
 
             # gjette y-verdian
-            y_pred = np.dot(X, self.weights) + self.bias
+            y_pred = self.predict(X)
 
             # regne ut bommen
             loss = (1 / m) * np.sum((y_pred - y) ** 2)
@@ -47,7 +47,7 @@ class LinearRegression():
             self.weights -= self.lr * dw
             self.bias -= self.lr * db
 
-        raise NotImplementedError("LinearRegression.fit is not implemented yet.")
+        # raise NotImplementedError("LinearRegression.fit is not implemented yet.")
     
     def predict(self, X):
         """
