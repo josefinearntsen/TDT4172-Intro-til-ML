@@ -11,18 +11,7 @@ class LinearRegression():
         self.loss_history = []
         
     def fit(self, X, y):
-        """
-        Estimates parameters for the classifier
-        
-        Args:
-            X (array<m,n>): a matrix of floats with
-                m rows (#samples) and n columns (#features)
-            y (array<m>): a vector of floats
-        """
-        # ====================================
-        # YOUR CODE GOES HERE
-        # ====================================
-
+       
         m, n = X.shape
 
         # stigning og konstantledd. starte med flat linje.
@@ -46,29 +35,10 @@ class LinearRegression():
             # så juster linja litt i den retninga. lr e kor store steg man tar. 
             self.weights -= self.lr * dw
             self.bias -= self.lr * db
-
-        # raise NotImplementedError("LinearRegression.fit is not implemented yet.")
     
     def predict(self, X):
-        """
-        Generates predictions
         
-        Note: should be called after .fit()
-        
-        Args:
-            X (array<m,n>): a matrix of floats with 
-                m rows (#samples) and n columns (#features)
-            
-        Returns:
-            A length m array of floats
-        """
-        # ====================================
-        # YOUR CODE GOES HERE
-        # ====================================
-
         y = np.dot(X, self.weights) + self.bias
-
-        # raise NotImplementedError("LinearRegression.predict is not implemented yet.")
     
         return y
     
